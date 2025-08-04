@@ -1,18 +1,28 @@
 import xml.etree.ElementTree as ET
-tree = ET.parse('rollcall949.xml')
+tree = ET.parse('roll948.xml')
 
 print(tree)
 
 root = tree.getroot()
+legisname = ""
+critterandvote = ""
+legisvote = ""
 
-for legis in root.findall("./vote-data/recorded-vote/"):  #grabs legislators name & vote
-	legisvote = legis.text+","
-	print (legisvote)
+for legis in root.findall("./vote-data/recorded-vote/legislator/"):  #grabs legislators name
+	legisname = legis.text+","
 	
-for desc in root.findall("./vote-metadata/vote-desc/"):   #should grab the bill description, doesnt, dont know why
-	description = desc.tag
-	print (description)
+	for legisv in root.findall("./vote-data/recorded-vote/vote/"):
+		legisvote = legisv.text
 	
-nf=open("RCH949.csv","w")   #doesnt creat csv, dont know why
-nf.write(legisvote)
+	critterandvote = legisname+legisvote
+	
+	print (critterandvote)
+	
+desc = root.find(".//vote-desc").text+","
+print (desc)
+print (critterandvote)
+RCD = desc+critterandvote
+
+nf=open("testthree.csv","w")   #doesnt creat csv, dont know why
+nf.write(RCD)
 nf.close()	
