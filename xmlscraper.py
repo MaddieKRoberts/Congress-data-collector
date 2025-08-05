@@ -8,15 +8,9 @@ legisname = ""
 critterandvote = ""
 legisvote = ""
 
-for legis in root.findall("./vote-data/recorded-vote/legislator/"):  #grabs legislators name
-	legisname = legis.text+","
-	
-	for legisv in root.findall("./vote-data/recorded-vote/vote/"):
-		legisvote = legisv.text
-	
-	critterandvote = legisname+legisvote
-	
-	print (critterandvote)
+for recordedvote in root.findall("./vote-data/"):  #grabs legislators name
+	recordedvote = legis.text+","
+
 	
 desc = root.find(".//vote-desc").text+","
 print (desc)
