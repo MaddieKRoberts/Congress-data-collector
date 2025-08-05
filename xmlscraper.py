@@ -8,8 +8,13 @@ legisname = ""
 critterandvote = ""
 legisvote = ""
 
-for recordedvote in root.findall("./vote-data/"):  #grabs legislators name
-	recordedvote = legis.text+","
+for v in root.findall("./vote-data/recorded-vote"):
+	# these two lines do the exact same thing, because v is
+	#the first set of recorded votes, v[0] is the first legislator in the first recorded vote
+	print(v[0].text)
+	legisname = v[0].text+","
+	legisvote = v[1].text+","+"/n"
+	critterandvote = legisname+legisvote
 
 	
 desc = root.find(".//vote-desc").text+","
@@ -17,6 +22,6 @@ print (desc)
 print (critterandvote)
 RCD = desc+critterandvote
 
-nf=open("testthree.csv","w")   #doesnt creat csv, dont know why
+nf=open("testfour.csv","w")   #doesnt creat csv, dont know why
 nf.write(RCD)
 nf.close()	
