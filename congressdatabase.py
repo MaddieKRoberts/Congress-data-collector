@@ -6,7 +6,11 @@ conn = sqlite3.connect('congress.db')
 #creates a cursor connected to "congress.db"
 c = conn.cursor()
 
-c.execute("INSERT INTO critters VALUES ('John', 'yea')")
+many_critters = [('guy', 'yea'), ('dude', 'nay'), ('bro', 'not voting'),]
+
+
+#inserts a row into database
+c.executemany("INSERT INTO critters VALUES (?,?)", many_critters)
 
 
 
