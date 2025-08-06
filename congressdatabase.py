@@ -7,14 +7,13 @@ conn = sqlite3.connect('congress.db')
 c = conn.cursor()
 
 #query the databse
-c.execute("SELECT * FROM critters")
+c.execute("SELECT rowid, * FROM critters")
 #c.fetchone()
 #c.fatchmany(3)
 personvote = c.fetchall()
 
-for i in personvote:
-    print(i[1])
-
+for critterandvote in personvote:
+    print (critterandvote)
 
 #commits our command
 conn.commit()
