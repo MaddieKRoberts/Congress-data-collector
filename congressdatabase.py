@@ -6,14 +6,24 @@ conn = sqlite3.connect('congress.db')
 #creates a cursor connected to "congress.db"
 c = conn.cursor()
 
+#update database
+c.execute("DELETE from critters WHERE rowid = 3")
+
+
+conn.commit()
+
+
+
+
+
 #query the databse
 c.execute("SELECT rowid, * FROM critters")
-#c.fetchone()
-#c.fatchmany(3)
+
 personvote = c.fetchall()
 
 for critterandvote in personvote:
     print (critterandvote)
+
 
 #commits our command
 conn.commit()
