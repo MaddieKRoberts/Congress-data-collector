@@ -6,7 +6,7 @@ conn = sqlite3.connect('congress.db')
 #creates a cursor connected to "congress.db"
 c = conn.cursor()
 
-
+c.execute("INSERT INTO critters VALUES ('John', 'yea')")
 
 
 
