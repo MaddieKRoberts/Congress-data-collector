@@ -5,20 +5,22 @@ import os
 
 def addhousebill(year, num):
     # Ensure the database directory exists
-    os.makedirs(os.path.dirname('housedata.db') or '.', exist_ok=True)
+    os.makedirs(os.path.dirname('hrdata.db') or '.', exist_ok=True)
 
     # Connect to database and create table (with error handling)
-    conn = sqlite3.connect('housedata.db')
+    conn = sqlite3.connect('hrdata.db')
     c = conn.cursor()
     
-    # Fix table creation syntax (remove trailing comma)
-    c.execute("""CREATE TABLE IF NOT EXISTS crittervote (
-        vote text, 
-        name text
-    )""")
     
-    # Fix URL generation 
-    urlnum = str(num).zfill(3)  # Correctly pad the number with zeros
+    c.execute("""CREATE TABLE IF NOT EXISTS repvotes (
+            vote text, 
+            name text
+            year integer,
+            bill integer
+        )""")
+    
+    
+    urlnum = str(num).zfill(3) 
     urlyear = f"https://clerk.house.gov/evs/{year}/roll"
     url = f"{urlyear}{urlnum}.xml"
 
@@ -51,12 +53,12 @@ def addhousebill(year, num):
             legisvote = v[1].text
             
             # Insert vote record
-            c.execute("INSERT INTO crittervote VALUES (?, ?)", (legisvote, legisname))
+            c.execute("INSERT INTO repvotes VALUES (?, ?, ?, ?)", (legisvote, legisname, year, num))
         
         # Commit changes
         conn.commit()
 
-        # Optional: Print all records
+        # Print all records
         c.execute("SELECT rowid, * FROM crittervote")
         print(c.fetchall())
 
@@ -64,12 +66,31 @@ def addhousebill(year, num):
         print(f"Error parsing XML file: {e}")
     
     finally:
-        # Always close the connection
+        # close the connection
         conn.close()
 	
-		
-	
+def deletehousebill(year, num):
 
+	# Establish connection to hrdata.db
+    conn = sqlite3.connect('hrdata.db')
+
+    # Creates cursor
+    c = conn.cursor()
+
+    # Deletes all vote data in the bill arguments
+    c.execute("DELETE from hrdata WHERE year = (?) AND bill = (?)", (year, num))
+
+    # Commit changes
+    conn.commit()
+
+    # Close connection
+    conn.close
+
+def emergencydeletetable():
+    #deletes table in emergency
+    conn = sqlite3.connect('housedata.db')
+    c = conn.cursor()
+    c.execute("DROP TABLE repvotes")
 	
 
 
