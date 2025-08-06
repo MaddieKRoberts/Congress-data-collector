@@ -8,8 +8,8 @@ c = conn.cursor()
 
 #creates a table in congress
 c.execute("""CREATE TABLE critters (
-        name TEXT,
-        vote TEXT,
+        name text,
+        vote text
     )""")
 
 #NULL
@@ -17,3 +17,9 @@ c.execute("""CREATE TABLE critters (
 #REAL
 #TEXT
 #BLOB
+
+#commits our command
+conn.commit()
+
+#close our connection
+conn.close
