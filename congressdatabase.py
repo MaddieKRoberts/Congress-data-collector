@@ -8,6 +8,12 @@ c = conn.cursor()
 
 #creates a table in congress
 c.execute("""CREATE TABLE critters (
-        name DATATYPE,
-        vote DATATYPE,
+        name TEXT,
+        vote TEXT,
     )""")
+
+#NULL
+#INTEGER
+#REAL
+#TEXT
+#BLOB
