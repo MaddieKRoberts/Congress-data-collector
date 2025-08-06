@@ -7,7 +7,7 @@ conn = sqlite3.connect('congress.db')
 c = conn.cursor()
 
 #update database
-c.execute("DELETE from critters WHERE rowid = 3")
+c.execute("DELETE from critters WHERE rowid = 3")   
 
 
 conn.commit()
