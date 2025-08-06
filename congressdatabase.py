@@ -6,19 +6,12 @@ conn = sqlite3.connect('congress.db')
 #creates a cursor connected to "congress.db"
 c = conn.cursor()
 
-many_critters = [('guy', 'yea'), ('dude', 'nay'), ('bro', 'not voting'),]
+#query the databse
+c.execute("SELECT * FROM critters")
+#c.fetchone()
+#c.fatchmany(3)
 
-
-#inserts a row into database
-c.executemany("INSERT INTO critters VALUES (?,?)", many_critters)
-
-
-
-#NULL
-#INTEGER
-#REAL
-#TEXT
-#BLOB
+print(c.fetchall())
 
 #commits our command
 conn.commit()
