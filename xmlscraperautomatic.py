@@ -24,7 +24,7 @@ for ro in range(o):
 		print(v[0].text)
 		legisname = v[0].text+","
 		legisvote = v[1].text+","+"\n"
-		critterandvote = critterandvote+legisname+legisvote
+		critterandvote = critterandvote+legisvote+legisname
 	
 		
 	

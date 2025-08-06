@@ -10,8 +10,11 @@ c = conn.cursor()
 c.execute("SELECT * FROM critters")
 #c.fetchone()
 #c.fatchmany(3)
+personvote = c.fetchall()
 
-print(c.fetchall())
+for i in personvote:
+    print(i[1])
+
 
 #commits our command
 conn.commit()
