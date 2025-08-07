@@ -59,7 +59,7 @@ def addhousebill(year, num):
         conn.commit()
 
         # Print all records
-        c.execute("SELECT rowid, * FROM crittervote")
+        c.execute("SELECT rowid, * FROM repvotes")
         print(c.fetchall())
 
     except ET.ParseError as e:
@@ -88,7 +88,7 @@ def deletehousebill(year, num):
 
 def emergencydeletetable():
     #deletes table in emergency
-    conn = sqlite3.connect('housedata.db')
+    conn = sqlite3.connect('hrdata.db')
     c = conn.cursor()
     c.execute("DROP TABLE repvotes")
 	
