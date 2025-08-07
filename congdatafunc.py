@@ -14,7 +14,7 @@ def addhousebill(year, num):
     
     c.execute("""CREATE TABLE IF NOT EXISTS repvotes (
             vote text, 
-            name text
+            name text,
             year integer,
             bill integer
         )""")
