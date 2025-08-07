@@ -1,27 +1,37 @@
 import xml.etree.ElementTree as ET
-tree = ET.parse('roll948.xml')
 
-print(tree)
+ranger = 948
+thingy = 1
 
-root = tree.getroot()
-legisname = ""
-critterandvote = ""
-legisvote = ""
+for ro in range(ranger):
 
-for v in root.findall("./vote-data/recorded-vote"):
-	# these two lines do the exact same thing, because v is
-	#the first set of recorded votes, v[0] is the first legislator in the first recorded vote
-	print(v[0].text)
-	legisname = v[0].text+","
-	legisvote = v[1].text+","+"/n"
-	critterandvote = legisname+legisvote
-
+	somefilename = '2011houseroll'
+	otherthing = '{}.xml'.format(thingy)
+	z = otherthing.rjust(7, '0')
+	filename = somefilename+z
+	threething = '{}'.format(thingy)
+	downloadedfilename = somefilename+threething
+	tree = ET.parse(filename)
+	print(tree)
 	
-desc = root.find(".//vote-desc").text+","
-print (desc)
-print (critterandvote)
-RCD = desc+critterandvote
+	root = tree.getroot()
+	legisname = ""
+	critterandvote = ""
+	legisvote = ""
+	
+	for v in root.findall("./vote-data/recorded-vote"):
+		print(v[0].text)
+		legisname = v[0].text+","
+		legisvote = v[1].text+","+"\n"
+		critterandvote = critterandvote+legisname+legisvote
+	
+		
+	
+	RCD = critterandvote
+	
+	filenameandcsv = downloadedfilename+".csv"
+	nf=open(filenameandcsv,"w")
+	nf.write(RCD)
+	nf.close()	
+	thingy+1
 
-nf=open("testfive.csv","w")   #doesnt creat csv, dont know why
-nf.write(RCD)
-nf.close()	

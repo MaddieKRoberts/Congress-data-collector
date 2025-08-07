@@ -1,17 +1,19 @@
 import xml.etree.ElementTree as ET
 
-ranger = 948
-thingy = 1
+o = 948
+k = 1
 
 for ro in range(ranger):
-
-	somefilename = '2011houseroll'
-	otherthing = '{}.xml'.format(thingy)
-	z = otherthing.rjust(7, '0')
-	filename = somefilename+z
-	threething = '{}'.format(thingy)
-	downloadedfilename = somefilename+threething
-	tree = ET.parse(filename)
+	
+	s = '{}.xml'.format(k)
+	n = '2011houseroll'
+	snum = s.rjust(7, '0')
+	sandn = n+snum
+	print (sandn)
+	k=k+1
+	
+	
+	tree = ET.parse(sandn)
 	print(tree)
 	
 	root = tree.getroot()
@@ -30,6 +32,7 @@ for ro in range(ranger):
 	RCD = critterandvote
 	
 	filenameandcsv = downloadedfilename+".csv"
+	print(filenameandcsv)
 	nf=open(filenameandcsv,"w")
 	nf.write(RCD)
 	nf.close()	
