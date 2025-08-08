@@ -10,6 +10,7 @@ for ro in range(o):
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	s = '{}.xml'.format(k)
 	n = '2011houseroll'
 	snum = s.rjust(7, '0')
@@ -38,6 +39,8 @@ for ro in range(o):
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 	try:	
 		s = '{}.xml'.format(k)
 		n = '2025houseroll'
@@ -47,6 +50,9 @@ for ro in range(o):
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
