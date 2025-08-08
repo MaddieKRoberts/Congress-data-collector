@@ -7,6 +7,7 @@ k = 1
 for ro in range(o):
 	
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	s = '{}.xml'.format(k)
 	n = '2011houseroll'
 	snum = s.rjust(7, '0')
@@ -29,12 +30,17 @@ for ro in range(o):
 		critterandvote = critterandvote+legisvote+legisname
 	
 =======
+=======
+>>>>>>> Stashed changes
 	try:	
 		s = '{}.xml'.format(k)
 		n = '2025houseroll'
 		snum = s.rjust(7, '0')
 		sandn = n+snum
 		print (sandn)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 		
 		
